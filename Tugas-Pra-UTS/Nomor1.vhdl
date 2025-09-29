@@ -14,4 +14,4 @@ end entity sistem_LPMT;
 architecture behavioral of sistem_LPMT is 
 begin 
     Y <= (P1 and T1) or (P1 and M1) or ((not L1) and T1);
-end architecture behavioral
+end architecture behavioral;
