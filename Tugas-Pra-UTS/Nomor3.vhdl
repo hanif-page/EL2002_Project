@@ -1,19 +1,19 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+use ieee.numeric_std.all; -- used for adding +1 in the process of getting 2's complements
 
-entity rangkaian_ED is 
+entity RangkaianED is -- the "RangkaianED" name must be the same with the filename in the Quartus 
     port (
         A : in std_logic_vector(3 downto 0);
         B : in std_logic_vector(3 downto 0);
         -- D : out std_logic_vector(3 downto 0);
-        A0 : out std_logic;
-        D0 : out std_logic;
+        A0 : buffer std_logic; -- buffer because we don't actually OUTPUT A0 and D0, it only used in the internal process
+        D0 : buffer std_logic;
         X : out std_logic
     );
-end entity rangkaian_ED;
+end entity RangkaianED;
 
-architecture behavioral of rangkaian_ED is 
+architecture behavioral of RangkaianED is 
     signal B_negative : std_logic_vector(3 downto 0);
 begin
     -- getting the B 2's complements
@@ -25,4 +25,4 @@ begin
 
     X <= not(A0 xor D0);
     
-end architecture behavioral
+end architecture behavioral;
